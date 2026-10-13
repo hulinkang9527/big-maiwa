@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>合成大麦霸 · Big MaiBa — 麦门美食合成</title>
+<meta name="description" content="合成大麦霸：把薯条、麦乐鸡、汉堡一路合成到派对桶的休闲小游戏。点击/触摸放置，同种相碰自动升级，停不下来就对了。" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<div class="stage">
+  <header class="hud">
+    <div class="hud__score">
+      <span class="hud__label">分数</span>
+      <span class="hud__num" id="score">0</span>
+    </div>
+    <div class="hud__best">
+      <span class="hud__label">最高分</span>
+      <span class="hud__num" id="best">0</span>
+    </div>
+    <div class="hud__btns">
+      <button class="iconbtn" id="soundBtn" title="音效开关" aria-label="音效开关" role="switch" aria-checked="true">🔊</button>
+      <button class="iconbtn" id="restartBtn" title="重新开始（R）" aria-label="重新开始">↻</button>
+    </div>
+  </header>
+
+  <div class="board">
+    <canvas id="game" width="420" height="720"></canvas>
+    <div class="next">
+      <span class="next__label">下一个</span>
+      <span class="next__item" id="nextItem">🍟</span>
+    </div>
+    <div class="topline" id="topline"></div>
+  </div>
+
+  <p class="hint">点击 / 触摸放置美食 · 同种相碰自动合成 · R 键重开</p>
+</div>
+
+<!-- 结束弹窗 -->
+<div class="overlay hidden" id="overlay">
+  <div class="modal">
+    <div class="modal__emoji" id="endEmoji">🎉</div>
+    <h2 class="modal__title" id="endTitle">游戏结束</h2>
+    <p class="modal__score">本局得分 <b id="endScore">0</b></p>
+    <p class="modal__best">最高分 <b id="endBest">0</b></p>
+
+    <div class="rank">
+      <div class="rank__head">
+        <span>🏆 最近高手榜</span>
+        <button class="rank__close" id="rankClose" title="收起">✕</button>
+      </div>
+      <ol class="rank__list" id="rankList"></ol>
+      <div class="rank__foot">
+        <input class="rank__input" id="nickInput" maxlength="10" placeholder="我的昵称" value="默认玩家" />
+        <span class="rank__note">只取最近 20 次提交</span>
+      </div>
+    </div>
+
+    <div class="modal__actions">
+      <button class="btn btn--primary" id="againBtn">再来一局</button>
+      <button class="btn btn--ghost" id="shareBtn">🔗 分享给朋友</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast hidden" id="toast"></div>
+
+<script src="js/game.js"></script>
+</body>
+</html>
